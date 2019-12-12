@@ -13,7 +13,7 @@
 </template>
 
 <page-query>
-query {
+query  {
   posts: allPost {
     edges {
       node {
@@ -27,6 +27,7 @@ query {
   }
 }
 </page-query>
+
 <script>
 export default {};
 </script>

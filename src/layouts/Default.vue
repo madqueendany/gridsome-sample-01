@@ -1,19 +1,10 @@
 <template>
-  <div class="layout">
-    <header class="header">
-      <strong>
-        <g-link to="/">{{ $static.metadata.siteName }}</g-link>
-      </strong>
-      <nav class="nav">
-        <g-link class="nav__link" to="/blogs">Notes</g-link>
-        <g-link class="nav__link" to="/about">About</g-link>
-        <!-- <template v-for="link in $static.navLinks" >
-          <g-link :key="link['path']" class="nav__link" :to="link['path']">{{link['path']}}</g-link>
-        </template> -->
-      </nav>
-    </header>
-    <slot/>
-  </div>
+  <v-app id="main">
+    <toolbar />
+    <main>
+      <slot />
+    </main>
+  </v-app>
 </template>
 
 <static-query>
@@ -27,11 +18,23 @@ query {
 }
 </static-query>
 
+<script>
+import Toolbar from "~/components/Toolbar.vue";
+import Vuetify from "vuetify";
+
+export default {
+  vuetify: new Vuetify(),
+  components: { Toolbar },
+  methods: {}
+};
+</script>
+
 <style>
 body {
-  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-  margin:0;
-  padding:0;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
   line-height: 1.5;
 }
 
@@ -40,6 +43,8 @@ body {
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
+  width: 100%;
+  flex-direction: column;
 }
 
 .header {
@@ -52,5 +57,15 @@ body {
 
 .nav__link {
   margin-left: 20px;
+}
+
+.theme--light.v-application {
+  background: none
+}
+
+/* vuetify overrides */
+
+.v-sheet {
+  background: transparent !important;
 }
 </style>

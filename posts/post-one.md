@@ -1,6 +1,7 @@
 ---
 title: First post
 slug: post-one
+excerpt: test
 ---
 
 # First post

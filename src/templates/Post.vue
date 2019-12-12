@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <div class="markdown-body" v-html="$page.post.content" />
+    <div class="layout markdown-body" v-html="$page.post.content" />
   </Layout>
 </template>
 
@@ -21,7 +21,21 @@ query Path($path: String!) {
 </page-query>
 
 <script>
-export default {};
+export default {
+  computed: {
+    vuetify() {
+      return this.$vuetify.theme
+    }
+  }
+};
 </script>
 
-<style></style>
+<style lang="scss">
+pre {
+  code {
+    width: 100%;
+    padding: 8px;
+    box-shadow: none !important;
+  }
+}
+</style>
