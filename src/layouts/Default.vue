@@ -23,12 +23,23 @@ query {
 
 <script>
 import Toolbar from "~/components/Toolbar.vue";
+import { mapState } from "vuex";
 import Vuetify from "vuetify";
 
 export default {
   vuetify: new Vuetify(),
   components: { Toolbar },
-  methods: {}
+  computed: {
+    ...mapState(["isLight"])
+  },
+  created() {
+    this.$vuetify.theme.dark = this.isLight
+  },
+  watch: {
+    isLight(val) {
+      this.$vuetify.theme.dark = val
+    }
+  }
 };
 </script>
 

@@ -2,14 +2,30 @@
 // The Client API can be used here. Learn more: gridsome.org/docs/client-api
 import Vuetify from "vuetify";
 import "vuetify/dist/vuetify.min.css";
-import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loader
-import 'prismjs/themes/prism.css'
+import "@mdi/font/css/materialdesignicons.css"; // Ensure you are using css-loader
+import "prismjs/themes/prism.css";
 import DefaultLayout from "~/layouts/Default.vue";
+import Vuex from "vuex";
 
 // import colors from 'vuetify/lib/util/colors'
 
-
 export default function(Vue, { appOptions, router, head, isClient }) {
+  // Vuex state management
+  Vue.use(Vuex);
+  appOptions.store = new Vuex.Store({
+    state: {
+      isLight: true
+    },
+    mutations: {
+      switchTheme(state) {
+        state.isLight = !state.isLight;
+      }
+    }
+  });
+
+  // Set default layout as a global component
+  Vue.component("Layout", DefaultLayout);
+
   head.link.push({
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -18,7 +34,7 @@ export default function(Vue, { appOptions, router, head, isClient }) {
   Vue.use(Vuetify);
 
   const opts = {
-    icons: { iconfont: 'mdiSvg' },
+    icons: { iconfont: "mdiSvg" }
     // theme: {
     //   themes: {
     //     light: {
@@ -37,7 +53,4 @@ export default function(Vue, { appOptions, router, head, isClient }) {
   };
 
   appOptions.vuetify = new Vuetify(opts);
-
-  // Set default layout as a global component
-  Vue.component("Layout", DefaultLayout);
 }
