@@ -2,7 +2,7 @@
   <v-app id="main">
     <toolbar />
 
-    <main :class="$vuetify.breakpoint.name">
+    <main>
       <v-sheet>
         <slot />
       </v-sheet>
@@ -41,22 +41,6 @@ body {
   line-height: 1.5;
 }
 
-main {
-  .xl,
-  .lg,
-  .md {
-    padding-left: 3em;
-  }
-
-  .sm {
-    padding: 1em;
-  }
-
-  .xs {
-    padding: 0.5em;
-  }
-}
-
 .layout {
   max-width: 760px;
   margin: 0 auto;
@@ -81,6 +65,15 @@ main {
 .theme--light.v-application {
   background: none;
 }
+
+// .content-right {
+//   padding-left: 3em;
+
+//   &.xs,
+//   &.sm {
+//     padding: 1.5em;
+//   }
+// }
 
 .text-jumbo {
   font-size: 8vw;

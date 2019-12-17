@@ -1,22 +1,20 @@
 <template>
-  <v-sheet class="mb-4">
-    <v-app-bar flat>
-      <v-toolbar-title>
-        <g-link to="/">Gridsome with Vuetify</g-link>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-toolbar-items>
-        <v-btn text to="/posts">Notes</v-btn>
-        <v-btn text to="/about">About</v-btn>
-      </v-toolbar-items>
-
-      <template v-if="$vuetify.breakpoint.smAndUp">
-        <v-btn icon @click="isLight = !isLight">
-          <v-icon>mdi-theme-light-dark</v-icon>
-        </v-btn>
-      </template>
-    </v-app-bar>
-  </v-sheet>
+  <div v-if="$vuetify.breakpoint.mdAndUp">
+    <v-sheet style="position: fixed; bottom: 1.5em; left: 3em">
+      <v-navigation>
+        <v-list class="pa-0">
+          <v-list-item>
+            <v-btn icon @click="isLight = !isLight">
+              <v-icon>mdi-theme-light-dark</v-icon>
+            </v-btn>
+          </v-list-item>
+          <v-list-item to="/">Home</v-list-item>
+          <v-list-item to="/posts">Notes</v-list-item>
+          <v-list-item to="/about">About</v-list-item>
+        </v-list>
+      </v-navigation>
+    </v-sheet>
+  </div>
 </template>
 
 <script>
@@ -27,10 +25,16 @@ export default {
   watch: {
     isLight(val) {
       this.$vuetify.theme.dark = !val;
-      console.log('this.$vuetify.theme.isDark->', this.$vuetify.theme.isDark) // eslint-disable-line no-console
     }
   }
 };
 </script>
 
-<style></style>
+<style lang="scss">
+.v-list-item--link:before,
+.v-list-item--active {
+  background: transparent !important;
+  color: teal !important;
+}
+
+</style>

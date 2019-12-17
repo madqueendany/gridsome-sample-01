@@ -1,7 +1,13 @@
 <template>
-  <Layout>
-    <div class="layout markdown-body" v-html="$page.post.content" />
-  </Layout>
+  <Post>
+    <v-sheet
+      class="d-flex flex-column pt-12 layout"
+      :class="$vuetify.breakpoint.name"
+      height="100vh"
+    >
+      <div class="markdown-body" v-html="$page.post.content" />
+    </v-sheet>
+  </Post>
 </template>
 
 <page-query>
@@ -21,16 +27,22 @@ query Path($path: String!) {
 </page-query>
 
 <script>
+import Post from "~/layouts/Post.vue";
 export default {
   computed: {
     vuetify() {
-      return this.$vuetify.theme
+      return this.$vuetify.theme;
     }
-  }
+  },
+  components: { Post }
 };
 </script>
 
 <style lang="scss">
+// .content-right {
+//   padding-left: 30%;
+// }
+
 pre {
   code {
     width: 100%;

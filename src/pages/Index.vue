@@ -1,30 +1,19 @@
 <template>
   <Layout>
-    <v-sheet class="layout flex-column justify-center" height="80vh">
+    <v-sheet
+      class="d-flex flex-column pt-12 content-right"
+      :class="$vuetify.breakpoint.name"
+      height="100vh"
+    >
       <g-image alt="Example image" src="~/favicon.png" width="135" />
-
-      <h1>Hello, world!</h1>
-
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur
-        excepturi labore tempore expedita, et iste tenetur suscipit explicabo!
-        Dolores, aperiam non officia eos quod asperiores
-      </p>
-
-      <p class="home-links">
-        <a href="https://gridsome.org/docs/" target="_blank" rel="noopener"
-          >Gridsome Docs</a
-        >
-        <a
-          href="https://github.com/gridsome/gridsome"
-          target="_blank"
-          rel="noopener"
-          >GitHub</a
-        >
+      <h1 class="text-jumbo">Lorem ipsum dolor sit</h1>
+      <p style="max-width: 40em">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati vero
+        eveniet voluptatibus odio fuga incidunt laborum nobis? Illum error nihil
+        deleniti amet eum rem fugit magni atque. Rem, dolorem ea.
       </p>
     </v-sheet>
-
-    <v-sheet height="95vh" color="teal lighten-5"></v-sheet>
+    <v-sheet class="flex-grow-1" height="95vh"></v-sheet>
     <v-sheet height="95vh" color="orange lighten-5"></v-sheet>
     <v-sheet height="95vh" color="purple lighten-5"></v-sheet>
     <v-sheet height="95vh" color="pink lighten-5"></v-sheet>
@@ -39,8 +28,10 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .home-links a {
   margin-right: 1rem;
 }
+
+
 </style>
